@@ -18,46 +18,46 @@ namespace BowlingGame
       int frameIndex = 0;
       for (int frame = 0; frame < 10; frame++)
       {
-        if (this.isStrike(frameIndex))
+        if (this.IsStrike(frameIndex))
         {
-          score += 10 + this.strikeBonus(frameIndex);
+          score += 10 + this.StrikeBonus(frameIndex);
           frameIndex++;
         }
-        else if (this.isSpare(frameIndex))
+        else if (this.IsSpare(frameIndex))
         {
-          score += 10 + this.spareBonus(frameIndex);
+          score += 10 + this.SpareBonus(frameIndex);
           frameIndex += 2;
         }
         else
         {
-          score += this.sumOfPinsInFrame(frameIndex);
+          score += this.SumOfPinsInFrame(frameIndex);
           frameIndex += 2;
         }
       }
       return score;
     }
 
-    private int sumOfPinsInFrame(int frameIndex)
+    private int SumOfPinsInFrame(int frameIndex)
     {
       return this.rolls[frameIndex] + this.rolls[frameIndex + 1];
     }
 
-    private int strikeBonus(int frameIndex)
+    private int StrikeBonus(int frameIndex)
     {
       return this.rolls[frameIndex + 1] + this.rolls[frameIndex + 2];
     }
 
-    private int spareBonus(int frameIndex)
+    private int SpareBonus(int frameIndex)
     {
       return this.rolls[frameIndex + 2];
     }
 
-    private bool isStrike(int frameIndex)
+    private bool IsStrike(int frameIndex)
     {
       return this.rolls[frameIndex] == 10;
     }
 
-    private bool isSpare(int frameIndex)
+    private bool IsSpare(int frameIndex)
     {
       return this.rolls[frameIndex] + this.rolls[frameIndex + 1] == 10;
     }
